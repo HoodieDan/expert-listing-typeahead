@@ -223,8 +223,8 @@ export function TypeaheadSearch({
 
   return (
     <div className="relative">
-      <div className="rounded-[1.75rem] border border-[#17251f]/10 bg-white p-4 shadow-[0_26px_70px_rgba(27,40,33,0.14)] sm:p-5">
-        <div className="mb-4 flex items-center justify-between px-1">
+      <div className="rounded-[1.4rem] border border-[#17251f]/10 bg-white p-3 shadow-[0_26px_70px_rgba(27,40,33,0.14)] min-[380px]:rounded-[1.75rem] min-[380px]:p-4 sm:p-5">
+        <div className="mb-4 flex flex-col items-start gap-3 px-1 min-[390px]:flex-row min-[390px]:items-center min-[390px]:justify-between">
           <div>
             <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#d85d35]">
               Country explorer
@@ -269,7 +269,7 @@ export function TypeaheadSearch({
             }}
             onBlur={() => setIsOpen(false)}
             placeholder="Try “Nigeria” or “United”…"
-            className="h-16 w-full rounded-2xl border border-[#17251f]/15 bg-[#f8f7f2] pl-12 pr-12 text-base font-medium text-[#17251f] outline-none transition placeholder:text-[#87908b] hover:border-[#17251f]/30 focus:border-[#d85d35] focus:bg-white focus:ring-4 focus:ring-[#d85d35]/10"
+            className="h-14 w-full rounded-xl border border-[#17251f]/15 bg-[#f8f7f2] pl-11 pr-11 text-[0.95rem] font-medium text-[#17251f] outline-none transition placeholder:text-[#87908b] hover:border-[#17251f]/30 focus:border-[#d85d35] focus:bg-white focus:ring-4 focus:ring-[#d85d35]/10 min-[380px]:h-16 min-[380px]:rounded-2xl min-[380px]:pl-12 min-[380px]:pr-12 min-[380px]:text-base"
           />
           {query ? (
             <button
@@ -288,7 +288,7 @@ export function TypeaheadSearch({
               id={RESULTS_ID}
               role={status === "success" ? "listbox" : "status"}
               aria-label="Country suggestions"
-              className="absolute left-0 right-0 top-[calc(100%+0.55rem)] z-20 overflow-hidden rounded-2xl border border-[#17251f]/10 bg-white p-2 shadow-[0_22px_60px_rgba(21,36,28,0.2)]"
+              className="absolute left-0 right-0 top-[calc(100%+0.55rem)] z-20 max-h-[min(25rem,55dvh)] overflow-y-auto overscroll-contain rounded-2xl border border-[#17251f]/10 bg-white p-2 shadow-[0_22px_60px_rgba(21,36,28,0.2)]"
             >
               {status === "loading" ? (
                 <div className="space-y-1 p-1" aria-hidden="true">
@@ -316,7 +316,7 @@ export function TypeaheadSearch({
                       onMouseDown={(event) => event.preventDefault()}
                       onMouseEnter={() => setActiveIndex(index)}
                       onClick={() => selectCountry(country)}
-                      className="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition hover:bg-[#f3f4ef] focus-visible:outline-2 focus-visible:outline-[#d85d35] aria-selected:bg-[#eef2ec]"
+                      className="group flex w-full items-center gap-2 rounded-xl px-2 py-2.5 text-left transition hover:bg-[#f3f4ef] focus-visible:outline-2 focus-visible:outline-[#d85d35] aria-selected:bg-[#eef2ec] min-[380px]:gap-3 min-[380px]:px-3"
                     >
                       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#17251f]/8 bg-[#f8f7f2] text-2xl shadow-sm" aria-hidden="true">
                         {countryCodeToEmoji(country.code)}
@@ -389,7 +389,7 @@ export function TypeaheadSearch({
                   </p>
                 </div>
               </div>
-              <div className="relative mt-5 grid grid-cols-2 gap-3">
+              <div className="relative mt-5 grid grid-cols-1 gap-3 min-[380px]:grid-cols-2">
                 <div className="rounded-xl border border-white/10 bg-white/6 p-3">
                   <p className="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white/45">Capital</p>
                   <p className="mt-1.5 text-sm font-semibold">{selected.capital}</p>
@@ -402,7 +402,7 @@ export function TypeaheadSearch({
             </div>
           </div>
         ) : (
-          <div className="mt-4 flex items-center gap-3 rounded-2xl border border-dashed border-[#17251f]/15 bg-[#f8f7f2]/70 px-4 py-4 text-sm text-[#657069]">
+          <div className="mt-4 flex items-start gap-3 rounded-2xl border border-dashed border-[#17251f]/15 bg-[#f8f7f2]/70 px-3 py-3.5 text-xs leading-5 text-[#657069] min-[380px]:items-center min-[380px]:px-4 min-[380px]:py-4 min-[380px]:text-sm">
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#e9efe9] text-[#3f684f]">
               <PinIcon className="h-4 w-4" />
             </span>
@@ -415,12 +415,10 @@ export function TypeaheadSearch({
         )}
       </div>
 
-      <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[0.68rem] font-bold uppercase tracking-[0.13em] text-[#536159] lg:justify-start">
-        <span>320ms debounce</span>
-        <span aria-hidden="true">·</span>
-        <span>Abortable requests</span>
-        <span aria-hidden="true">·</span>
-        <span>WAI-ARIA combobox</span>
+      <div className="mt-5 flex flex-wrap justify-center gap-2 text-[0.58rem] font-bold uppercase tracking-[0.1em] text-[#536159] min-[380px]:gap-2.5 min-[380px]:text-[0.65rem] min-[380px]:tracking-[0.12em] lg:justify-start">
+        <span className="rounded-full border border-[#17251f]/12 bg-white/45 px-2.5 py-1.5">320ms debounce</span>
+        <span className="rounded-full border border-[#17251f]/12 bg-white/45 px-2.5 py-1.5">Abortable requests</span>
+        <span className="rounded-full border border-[#17251f]/12 bg-white/45 px-2.5 py-1.5">WAI-ARIA combobox</span>
       </div>
     </div>
   );
